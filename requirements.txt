@@ -10,4 +10,6 @@ joblib
 types-pyYAML
 Flask
 Flask-Cors
+mlflow==2.2.2
+gdown
 -e .
