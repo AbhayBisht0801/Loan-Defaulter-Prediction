@@ -12,6 +12,7 @@ import base64
 import pickle
 import numpy as np
 from numpy.linalg import norm
+from sklearn.metrics import recall_score,precision_score    
 
 
 @ensure_annotations
@@ -144,7 +145,19 @@ def get_size(path: Path) -> str:
     """
     size_in_kb = round(os.path.getsize(path)/1024)
     return f"~ {size_in_kb} KB"
-
+def evaluate_models(X,y,X_test,y_test,models):
+    try:
+        reports={}
+        for i in range(len(list(models))):
+            model=list(models.values())[i]
+            model.fit(X,y)
+            y_pred=model.predict(X_test)
+            test_recall=recall_score(y_test,y_pred)
+            test_precision=precision_score(y_test,y_pred)
+            reports[list(models.keys())[i]]=[test_precision,test_recall]
+        return reports
+    except Exception as e:
+        raise e
         
 
 

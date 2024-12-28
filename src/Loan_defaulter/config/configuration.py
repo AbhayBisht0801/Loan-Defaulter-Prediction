@@ -1,6 +1,6 @@
 from src.Loan_defaulter.constants import *
 from src.Loan_defaulter.utils.common import read_yaml,create_directories
-from src.Loan_defaulter.entity.config_entity import DataIngestionConfig,DataTransformationConfig 
+from src.Loan_defaulter.entity.config_entity import DataIngestionConfig,DataTransformationConfig,ModelTrainingConfig
 class ConfigurationManager:
     def __init__(
             self,
@@ -37,5 +37,18 @@ class ConfigurationManager:
             split_dir=config.data_transformation.split_dir,
             preprocess_obj=config.data_transformation.preprocess_obj,
             data_dir=config.data_ingestion.data_dir
+        )
+        return data_transformation_config
+    def get_data_training_config(self)->ModelTrainingConfig:
+        config=self.config
+       
+        create_directories([config.model_training.root_dir])
+
+        data_transformation_config=ModelTrainingConfig(
+            root_dir=config.model_training.root_dir,
+            split_dir=config.data_transformation.split_dir,
+            data_dir=config.data_ingestion.data_dir,
+            best_model=config.model_training.best_model,
+            
         )
         return data_transformation_config

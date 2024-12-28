@@ -9,3 +9,6 @@ data_transformation:
   root_dir: artifacts/data_transformation
   split_dir: artifacts/data_transformation/split_data
   preprocess_obj: artifacts/data_transformation/preprocess_obj
+model_training:
+  root_dir: artifacts/model_training
+  best_model: artifacts/model_training/best_model.pkl

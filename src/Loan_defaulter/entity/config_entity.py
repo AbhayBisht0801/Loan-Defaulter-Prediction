@@ -13,3 +13,9 @@ class DataTransformationConfig:
     split_dir:Path
     preprocess_obj:Path
     data_dir:Path
+@dataclass(frozen=True)
+class ModelTrainingConfig:
+    root_dir:Path
+    data_dir:Path
+    best_model:Path
+    split_dir:Path
