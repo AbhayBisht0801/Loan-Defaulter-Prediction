@@ -1,6 +1,6 @@
 from src.Loan_defaulter.constants import *
 from src.Loan_defaulter.utils.common import read_yaml,create_directories
-from src.Loan_defaulter.entity.config_entity import DataIngestionConfig,DataTransformationConfig,ModelTrainingConfig
+from src.Loan_defaulter.entity.config_entity import DataIngestionConfig,DataTransformationConfig,ModelTrainingConfig,MLFlowTrackingConfig
 class ConfigurationManager:
     def __init__(
             self,
@@ -52,3 +52,16 @@ class ConfigurationManager:
             
         )
         return data_transformation_config
+    def get_model_tracking_config(self)->MLFlowTrackingConfig:
+        config=self.config
+       
+        create_directories([config.mlflow.root_dir])
+
+        model_tracking_config=MLFlowTrackingConfig(
+            root_dir=config.mlflow.root_dir,
+            test_data_path=config.data_transformation.split_dir,
+            best_model=config.model_training.best_model,
+            metrics_file_name=config.mlflow.metrics_file_name,
+            mlflow_uri="https://dagshub.com/AbhayBisht0801/Loan-Defaulter-Prediction.mlflow"
+        )
+        return model_tracking_config

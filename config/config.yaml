@@ -12,3 +12,7 @@ data_transformation:
 model_training:
   root_dir: artifacts/model_training
   best_model: artifacts/model_training/best_model.pkl
+mlflow:
+  root_dir: artifacts/mlflow
+  metrics_file_name: artifacts/mlflow/metrics.json
+  

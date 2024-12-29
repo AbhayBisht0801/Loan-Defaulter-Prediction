@@ -13,4 +13,5 @@ Flask-Cors
 mlflow==2.2.2
 gdown
 imbalanced-learn
+dagshub
 -e .

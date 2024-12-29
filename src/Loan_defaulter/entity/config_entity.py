@@ -19,3 +19,10 @@ class ModelTrainingConfig:
     data_dir:Path
     best_model:Path
     split_dir:Path
+@dataclass
+class MLFlowTrackingConfig:
+    root_dir:Path
+    test_data_path:Path
+    best_model:Path
+    metrics_file_name:Path
+    mlflow_uri:str
