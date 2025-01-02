@@ -15,4 +15,5 @@ model_training:
 mlflow:
   root_dir: artifacts/mlflow
   metrics_file_name: artifacts/mlflow/metrics.json
+  confusion_matrix: artifacts/mlflow/confusion.png
   

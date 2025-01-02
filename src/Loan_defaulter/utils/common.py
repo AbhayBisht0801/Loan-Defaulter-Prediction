@@ -13,8 +13,9 @@ import pickle
 import numpy as np
 from numpy.linalg import norm
 from sklearn.metrics import recall_score,precision_score    
-
-
+from sklearn.metrics import confusion_matrix
+import matplotlib.pyplot as plt
+import seaborn as sns
 @ensure_annotations
 def read_yaml(path_to_yaml: Path) -> ConfigBox:
     """reads yaml file and returns
@@ -158,6 +159,25 @@ def evaluate_models(X,y,X_test,y_test,models):
         return reports
     except Exception as e:
         raise e
+def create_confusion_matrix_plot(file_path, y_pred, y_true):
+    # Generate the confusion matrix
+    cm = confusion_matrix(y_true, y_pred)
+
+    # Create a heatmap
+    plt.figure(figsize=(10, 7))
+    sns.heatmap(cm, annot=True, fmt='d', cmap='Blues')
+
+    # Add labels and title
+    plt.xlabel('Predicted Labels')
+    plt.ylabel('True Labels')
+    plt.title('Confusion Matrix')
+
+    # Save the heatmap to a file
+    plt.savefig(file_path)
+
+    # Close the plot to release memory
+    plt.close()
+
         
 
 

@@ -26,3 +26,4 @@ class MLFlowTrackingConfig:
     best_model:Path
     metrics_file_name:Path
     mlflow_uri:str
+    confusion_matrix:Path

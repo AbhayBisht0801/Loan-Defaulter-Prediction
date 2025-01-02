@@ -62,6 +62,8 @@ class ConfigurationManager:
             test_data_path=config.data_transformation.split_dir,
             best_model=config.model_training.best_model,
             metrics_file_name=config.mlflow.metrics_file_name,
-            mlflow_uri="https://dagshub.com/AbhayBisht0801/Loan-Defaulter-Prediction.mlflow"
+            mlflow_uri="https://dagshub.com/AbhayBisht0801/Loan-Defaulter-Prediction.mlflow",
+                        confusion_matrix=config.mlflow.confusion_matrix
+
         )
         return model_tracking_config
